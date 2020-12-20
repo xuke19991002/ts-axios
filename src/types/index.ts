@@ -30,7 +30,9 @@ export interface AxiosRequestConfig {
   cancelToken?: CancelToken
   withCredentials?: boolean
   xsrfCookieName?: string
-  xsrfHeaderName?: string
+  xsrfHeaderName?: string,
+  onDownloadProgress?: (e: ProgressEvent) => void
+  onUploadProgress?: (e: ProgressEvent) => void
   [propsNmae: string]: any
 }
 
