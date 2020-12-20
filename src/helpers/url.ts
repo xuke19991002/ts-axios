@@ -54,4 +54,27 @@ export function buildURL(url: string, params?: any): string {
   return url
 }
 
+interface URLOrigin {
+  protocol: string
+  host: string
+}
+
+const urlParsingNode = document.createElement('a')
+const currentOrigin = resolveURL(location.href)
+
+function resolveURL(url: string): URLOrigin {
+  urlParsingNode.setAttribute('href', url)
+  const { protocol, host } = urlParsingNode
+  return {
+    protocol,
+    host
+  }
+}
+
+// 判断是否是同源请求
+export function isURLSameOrigin(requestURL: string): boolean {
+  const parseOrigin = resolveURL(requestURL)
+  return parseOrigin.protocol === currentOrigin.protocol && parseOrigin.host === currentOrigin.host
+}
+
 // encodeURI和encodeURIComponent的区别 https://www.cnblogs.com/qlqwjy/p/9934706.html
