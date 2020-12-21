@@ -89,5 +89,15 @@ export function isURLSameOrigin(requestURL: string): boolean {
   return parseOrigin.protocol === currentOrigin.protocol && parseOrigin.host === currentOrigin.host
 }
 
+// 判断是否为一个绝对地址
+export function isAbsoluteURL(url: string): boolean {
+  return /(^[a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
+}
+
+// 合并url
+export function combineURL(baseURL: string, relativeURL?: string): string {
+  return relativeURL ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '') : baseURL
+}
+
 // encodeURI和encodeURIComponent的区别 https://www.cnblogs.com/qlqwjy/p/9934706.html
 // URLSearchParams https://segmentfault.com/a/1190000019099536

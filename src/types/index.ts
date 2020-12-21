@@ -37,6 +37,7 @@ export interface AxiosRequestConfig {
   validateStatus?: (status: number) => boolean
   paramsSerializer?: (params: any) => string
   [propsNmae: string]: any
+  baseURL?: string
 }
 
 export interface AxiosResponse<T = any> {
