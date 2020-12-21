@@ -14,7 +14,7 @@ export default function dispatchRequest(config: AxiosRequestConfig): AxiosPromis
   })
 }
 
-function transformURL(config: AxiosRequestConfig): string {
+export function transformURL(config: AxiosRequestConfig): string {
   let { url, params, paramsSerializer, baseURL } = config
   // 存在baseURL且是一个相对地址
   if (baseURL && !isAbsoluteURL(url!)) {
